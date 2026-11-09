@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IKAZE THEO AI</title>
+<meta name="description" content="">
+<meta name="color-scheme" content="dark"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%2303040c'/%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%2322d3ee' stroke-width='3'/%3E%3Cpath d='M13 14h14M20 14v13' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#03040c;--tx:#eef3ff;--mu:#aab6dc;--cy:#22d3ee;--bl:#3b82f6;--vi:#8b5cf6;--or:#ff8a2a;--gl:rgba(12,18,44,.72);--bd:rgba(90,150,255,.3);color-scheme:dark;box-sizing:border-box}
+*,*:before,*:after{box-sizing:inherit}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100dvh;background:radial-gradient(ellipse at 75% 10%,#14246b 0,transparent 55%),radial-gradient(ellipse at 10% 90%,#2b1160 0,transparent 50%),var(--bg);color:var(--tx);font:1rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+#cv{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+a{color:var(--cy)}
+:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.sk{position:absolute;left:-999px;top:0;background:var(--cy);color:#001;padding:.7rem 1rem;z-index:99}.sk:focus{left:0}
+.app{position:relative;z-index:1;display:flex;min-height:100dvh}
+.col{flex:1;min-width:0;display:flex;flex-direction:column;min-height:100dvh}
+aside{position:fixed;top:0;bottom:0;left:0;width:min(84vw,290px);transform:translateX(-102%);transition:transform .25s;z-index:40;background:rgba(5,8,22,.97);border-right:1px solid var(--bd);overflow-y:auto;padding:calc(.8rem + env(safe-area-inset-top)) .8rem calc(1rem + env(safe-area-inset-bottom))}
+aside.o{transform:none}
+@media(max-width:899px){aside:not(.o){visibility:hidden}}
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:35}
+.brand{display:flex;align-items:center;gap:.6rem;color:var(--tx);text-decoration:none;font-weight:800;letter-spacing:.05em;padding:.4rem .4rem .8rem;min-height:48px}
+#nv a{display:flex;align-items:center;gap:.6rem;min-height:46px;padding:0 .7rem;color:var(--tx);text-decoration:none;border-radius:10px;border-left:3px solid transparent}
+#nv a:hover{background:rgba(59,130,246,.15)}
+#nv a[aria-current=page]{background:rgba(34,211,238,.12);border-left-color:var(--or);color:var(--cy);font-weight:700}
+.gh{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);margin:1rem .7rem .3rem}
+.tb{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:.5rem;min-height:56px;padding:.3rem .8rem;padding-top:calc(.3rem + env(safe-area-inset-top));background:rgba(3,4,12,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+.tg{font-size:.85rem;color:var(--mu);margin-right:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ib{min-width:44px;min-height:44px;border-radius:12px;border:1px solid var(--bd);background:#0b1130;color:var(--tx);font-size:1.1rem;cursor:pointer}
+select{min-height:44px;background:#0b1130;color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:0 .5rem;max-width:44vw}
+@media(min-width:900px){aside{position:sticky;transform:none;width:270px;flex:none;height:100dvh;top:0}#ov,#mb{display:none!important}.tg{display:block}}
+main{flex:1;width:min(980px,100%);margin-inline:auto;padding:1.2rem 1rem 1rem}
+h1{font-size:clamp(1.7rem,6.5vw,3rem);line-height:1.12;margin:.5rem 0}
+h2{font-size:1.2rem;margin:1.5rem 0 .6rem}
+p{margin:.4rem 0;max-width:70ch}.mu{color:var(--mu)}
+.hero{text-align:center;padding:1.2rem 0 .5rem}.hero p{margin-inline:auto}
+.hero h1{background:linear-gradient(90deg,#fff,var(--cy) 60%,var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-block;border:1px solid var(--or);color:#ffb677;border-radius:999px;padding:.25rem .8rem;font-size:.85rem;margin:.6rem 0}
+.cp{position:sticky;bottom:0;padding:.6rem 0 calc(.6rem + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(3,4,12,.92) 35%)}
+.bx{background:var(--gl);border:1px solid var(--bd);border-radius:18px;padding:.7rem;backdrop-filter:blur(10px);box-shadow:0 0 30px rgba(59,130,246,.2)}
+textarea{width:100%;min-height:76px;max-height:40dvh;resize:vertical;background:transparent;border:0;color:var(--tx);font:inherit;font-size:1rem;outline:0}
+.rw{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap}.rw .sp{flex:1}
+a.ib{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}.go{background:linear-gradient(90deg,var(--bl),var(--vi));border:0;color:#fff}
+.chip{min-height:36px;border-radius:999px;border:1px solid var(--bd);background:#0b1130;color:var(--tx);padding:0 .8rem;cursor:pointer;margin:.2rem .3rem .2rem 0;max-width:100%;overflow-wrap:anywhere}
+.th{display:grid;gap:.7rem;margin:1rem 0}
+.bb{background:var(--gl);border:1px solid var(--bd);border-radius:14px;padding:.6rem .9rem;max-width:min(92%,640px)}
+.bb.sy{border-color:var(--or);justify-self:start}.bb:not(.sy){justify-self:end;background:rgba(59,130,246,.22)}
+.bb p{margin:.2rem 0;overflow-wrap:anywhere}
+.grid{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));margin:.8rem 0}
+.cd{background:var(--gl);border:1px solid var(--bd);border-radius:16px;padding:1rem;backdrop-filter:blur(8px);color:var(--tx);text-align:left;font:inherit}
+button.cd{cursor:pointer;min-height:56px}button.cd:hover,a.cd:hover{border-color:var(--cy);box-shadow:0 0 22px rgba(34,211,238,.25)}
+a.cd{text-decoration:none;display:block}
+.st{border-left:5px solid var(--or);background:var(--gl);border-radius:10px;padding:.7rem 1rem;margin:.8rem 0}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 1.2rem;border-radius:999px;background:linear-gradient(90deg,var(--bl),var(--vi));color:#fff;text-decoration:none;border:0;font:inherit;font-weight:700;cursor:pointer}
+label.ck{display:flex;gap:.6rem;align-items:center;min-height:44px}input[type=checkbox]{width:22px;height:22px}
+footer{padding:1.2rem 1rem calc(1.2rem + env(safe-area-inset-bottom));border-top:1px solid var(--bd);background:rgba(3,4,12,.9);color:var(--mu);font-size:.95rem}
+footer p{margin:.2rem auto;text-align:center;max-width:none}footer a{font-weight:700}
+.wr{overflow-wrap:anywhere}
+.ib{display:inline-flex;align-items:center;justify-content:center}a.nb,a.ac{text-decoration:none}
+.nb{display:flex;align-items:center;gap:.6rem;width:100%;min-height:46px;padding:0 .8rem;border-radius:12px;border:1px solid var(--cy);background:rgba(34,211,238,.1);color:var(--cy);font:inherit;font-weight:700;cursor:pointer;margin-bottom:.5rem}
+.ci{display:flex;align-items:center;border-radius:10px;border-left:3px solid transparent}.ci.on{background:rgba(34,211,238,.12);border-left-color:var(--or)}
+.ct{flex:1;min-width:0;display:flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .5rem;background:none;border:0;color:var(--tx);font:inherit;text-align:left;cursor:pointer}.ct span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ia{min-width:40px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;background:none;border:0;color:var(--mu);cursor:pointer;border-radius:8px}.ia:hover{color:var(--cy)}.ia.act{color:var(--or)}.ia.danger{color:#ff8a8a;background:rgba(255,80,80,.18)}
+.sm{font-size:.8rem;color:#ffb4a3;margin:0 .6rem .3rem}
+.avt{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;overflow:hidden;background:#0b1130;border:1px solid var(--bd);color:var(--cy);flex:none}.avt img{width:100%;height:100%;object-fit:cover}
+#tav{padding:0;border-radius:50%;overflow:hidden;min-width:44px}
+#acct{position:sticky;bottom:0;margin:.8rem -.8rem -1rem;padding:.7rem .8rem calc(.8rem + env(safe-area-inset-bottom));background:rgba(5,8,22,.98);border-top:1px solid var(--bd)}
+.ac{display:flex;align-items:center;gap:.6rem;color:var(--tx);min-height:48px;margin-bottom:.5rem}.ac .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rec{background:rgba(255,80,80,.25)!important;border-color:#ff6b6b!important;color:#ffb4b4}
+.lgo{display:inline-flex;vertical-align:middle;margin-right:.4rem}
+.chip svg,.btn svg{margin-right:.4rem;vertical-align:-3px}
+.mi{display:flex;gap:.4rem;margin:.5rem 0}.mi input[type=text],.fm input{flex:1;min-width:0;min-height:46px;background:#0b1130;color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:0 .7rem;font:inherit}
+.fm{display:grid;gap:.6rem;max-width:460px}.fm label{display:grid;gap:.3rem;font-weight:600}.er{color:#ffb4a3;min-height:1.1em}.ok{border-left:5px solid var(--cy);background:var(--gl);padding:.6rem .9rem;border-radius:8px}
+</style>
+</head>
+<body>
+<canvas id="cv" aria-hidden="true"></canvas>
+<a class="sk" id="sk" href="#main"></a>
+<div class="app">
+<aside id="sb"><a class="brand" href="#home"><svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><circle cx="20" cy="20" r="15" fill="none" stroke="url(#g1)" stroke-width="3"/><ellipse cx="20" cy="20" rx="19" ry="7" fill="none" stroke="#3b82f6" stroke-opacity=".8" transform="rotate(-25 20 20)"/><path d="M13 14h14M20 14v13" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span>IKAZE THEO AI</span></a><nav id="nv"></nav><div id="acct"></div></aside>
+<div id="ov" hidden></div>
+<div class="col">
+<header class="tb"><button class="ib" id="mb" aria-controls="sb" aria-expanded="false"></button><span class="tg" id="tg"></span><select id="ls"><option value="en">EN</option><option value="rw">RW</option><option value="fr">FR</option></select><a class="ib" id="tav" href="#account"></a></header>
+<main id="main"></main>
+<footer id="ft"></footer>
+</div></div>
+<script>
+var D={
+en:{ti:"IKAZE THEO AI — One Intelligence. Unlimited Possibilities.",de:"IKAZE THEO AI by Niyibigira Theoneste and Ikaze Digital. Interface preview — the AI backend is not connected yet.",tag:"One Intelligence. Unlimited Possibilities.",
+hi:"Hello, I’m IKAZE THEO AI.",hq:"What shall we create, discover or accomplish today?",ph:"Ask me anything, describe your idea, upload a file or start creating...",st:"Interface preview. The AI is not connected yet, so no answers are generated.",
+nv:["Home","New chat","Explore AI","Settings","About IKAZE THEO AI"],sh:"Studios",mn:"Menu",lg:"Language",sk:"Skip to content",
+sn:["Image Studio","Music Studio","Coding Studio","Writing Studio","Research Center","Learning Center","Document Studio","Translation Studio","Data Analysis","Website Creator"],
+sd:["Describe a picture and generate it, e.g. a logo concept for a Kigali café.","Songwriting, lyrics, chords and music theory, e.g. a chorus for a gospel song.","Write, explain and debug code, e.g. fix a JavaScript error.","Emails, essays, CVs and stories, e.g. a cover letter for a teaching job.","Research a topic with sources, e.g. compare solar panel options.","Study plans and tutoring, e.g. explain fractions step by step.","Summarise PDF, Word and spreadsheet files, e.g. key points of a contract.","Translate and correct text, e.g. English to Kinyarwanda.","Analyse CSV data and make charts, e.g. monthly sales trends.","Plan a website or app, e.g. pages for a small shop."],
+ac:["Write anything","Generate images","Create music","Write code","Learn something new","Analyze documents","Translate languages","Research a topic","Create a website","Solve a problem","Analyze data","Create a business plan"],
+sec:"Try one of these",sub:"Send",att:"Attach file or image",mic:"Voice input",img:"Image generation",nw:"New conversation",rm:"Remove",vns:"Voice input is not supported in this browser.",vls:"Listening…",sys:"System",you:"You",
+bk:"This workspace needs the server-side AI connection (the OpenAI key must stay on a server). It is not connected yet, so your message was not sent anywhere and no answer was generated.",bi:"Image and music generation also need separate providers, which are not connected.",af:"Files are listed but not read or uploaded yet.",
+ex:"Explore AI",exp:"Choose a workspace. Each one is a place for a kind of task.",op:"Open",
+sT:"Settings",sLg:"Language",sMo:"Reduce motion in the background",sCl:"Clear local data",sClm:"Settings, chats, memories and your picture were cleared from this device.",sNote:"Accounts, memory, history and saved items are not available yet. They need sign-in and a database, which are not built.",
+aH:"About IKAZE THEO AI",a1:"IKAZE THEO AI is developed and continuously advanced by",a2:"An innovation by",av:"Vision: a personal and professional AI assistant that helps people learn, create, research, code, communicate and solve problems.",af2:"Verified information about the founder",ar:"Name: Niyibigira Theoneste. Role: founder and developer of IKAZE THEO AI. Organization: Ikaze Digital.",an:"We do not publish any other biography until the founder provides it. If you ask for something that is not verified, the AI should say so.",as:"Current status",ass:"Only this interface exists. Sign-in, the AI connection, image and music providers, memory, history, admin and payments are not built yet.",
+rc:"Recent chats",pin:"Pin chat",unp:"Unpin chat",del:"Delete chat",cf:"Tap again to confirm",noc:"No chats yet. Start one below.",si:"Sign in",so:"Sign out",gu:"Guest",acc:"Account",mem:"Memory",ce:"Start a conversation below. Your chats are saved on this device.",
+aT:"Account",aP:"Profile picture",aU:"Upload picture",aR:"Remove picture",aN:"Display name",aS:"Save",aOk:"Saved on this device.",aSt:"Signed in as ",aGu:"You are using IKAZE THEO AI as a guest. Chats, memory and your picture are saved on this device only.",aFb:"Sign-in is ready to connect to Firebase. Until the site owner adds the Firebase configuration, accounts cannot be created.",aBg:"Please choose an image file.",
+mT:"Memory",mP:"Things you want IKAZE THEO AI to remember. They stay on this device and you control them.",mOn:"Remember things between chats",mAd:"Add a memory",mPh:"For example: I prefer short answers",mAb:"Add",mDel:"Delete this memory",mAll:"Delete all memories",mNo:"No memories saved.",mSec:"For your safety, do not save passwords, keys or card numbers. That text was not saved.",mNt:"The AI is not connected yet, so memories are stored but not used. Once connected, active memories will be given to it as context.",
+gB:"Continue with Google",pW:"Password",sI:"Sign in with password",cA:"Create account",fp:"Forgot password?",dv3:"or",nco:"Sign-in is not connected yet. The site owner must add the Firebase configuration before Google or password sign-in can work. Nothing was sent.",pE:"Please enter a password of at least 6 characters.",ok2:"Signed in as ",er2:"Sign-in failed: ",rs:"If an account exists for this email, a reset message has been sent.",jE:"Email address",eE:"Please enter a valid email address.",sH:"Sign in",sP2:"Sign in with your Google account or with your email and password.",
+f1:"IKAZE THEO AI — Developed by",f2:"Powered by innovation. Advanced by"},
+rw:{ti:"IKAZE THEO AI — Ubwenge bumwe. Amahirwe atagira imipaka.",de:"IKAZE THEO AI ya Niyibigira Theoneste na Ikaze Digital. Ni ishusho y’ibanze — AI ntiraba ihuzwa.",tag:"Ubwenge bumwe. Amahirwe atagira imipaka.",
+hi:"Muraho, ndi IKAZE THEO AI.",hq:"Uyu munsi turahanga iki, turavumbura iki, cyangwa turageraho iki?",ph:"Baza ikintu cyose, sobanura igitekerezo cyawe, shyiramo dosiye cyangwa tangira guhanga...",st:"Ishusho y’ibanze. AI ntiraba ihuzwa, bityo nta bisubizo bitangwa.",
+nv:["Ahabanza","Ikiganiro gishya","Shakisha AI","Igenamiterere","Ibyerekeye IKAZE THEO AI"],sh:"Aho gukorera",mn:"Menu",lg:"Ururimi",sk:"Simbukira ku nyandiko",
+sn:["Ahakorerwa amashusho","Ahakorerwa umuziki","Ahakorerwa porogaramu","Ahandikirwa","Ikigo cy’ubushakashatsi","Ikigo cyo kwiga","Ahakorerwa inyandiko","Ahahindurirwa indimi","Isesengura ry’amakuru","Uwubaka imbuga"],
+sd:["Sobanura ishusho uyibone, urugero ikirango cy’iduka rya kawa i Kigali.","Kwandika indirimbo, amagambo, inoti n’amategeko y’umuziki, urugero igitero cy’indirimbo ya gospel.","Andika, sobanura kandi ukosore porogaramu, urugero ikosa rya JavaScript.","Imeri, inyandiko, CV n’inkuru, urugero ibaruwa isaba akazi k’ubwarimu.","Kora ubushakashatsi bufite aho buturuka, urugero gereranya amoko y’imirasire y’izuba.","Gahunda yo kwiga n’inyigisho, urugero sobanura ibice intambwe ku yindi.","Incamake ya PDF, Word n’imbonerahamwe, urugero ingingo z’ingenzi z’amasezerano.","Hindura indimi ukosore inyandiko, urugero Icyongereza ujya mu Kinyarwanda.","Sesengura amakuru ya CSV ukore ibishushanyo, urugero uko ibicuruzwa bigenda buri kwezi.","Tegura urubuga cyangwa porogaramu, urugero impapuro z’iduka rito."],
+ac:["Andika icyo ari cyo cyose","Kora amashusho","Kora umuziki","Andika porogaramu","Iga ikintu gishya","Sesengura inyandiko","Hindura indimi","Kora ubushakashatsi","Kora urubuga","Bonera igisubizo ikibazo","Sesengura amakuru","Kora gahunda y’ubucuruzi"],
+sec:"Gerageza kimwe muri ibi",sub:"Ohereza",att:"Shyiramo dosiye cyangwa ishusho",mic:"Gukoresha ijwi",img:"Gukora ishusho",nw:"Ikiganiro gishya",rm:"Kuraho",vns:"Iyi porogaramu ntishyigikira gukoresha ijwi.",vls:"Ndumva…",sys:"Sisitemu",you:"Wowe",
+bk:"Aha hakorerwa hakeneye isano na AI ikorera kuri seriveri (urufunguzo rwa OpenAI rugomba kuguma kuri seriveri). Ntirurahuzwa, bityo ubutumwa bwawe ntaho bwoherejwe kandi nta gisubizo cyatanzwe.",bi:"Gukora amashusho n’umuziki bikenera abatanga serivisi bihariye, na bo ntibarahuzwa.",af:"Dosiye ziranditswe gusa, ntizirasomwa cyangwa ngo zoherezwe.",
+ex:"Shakisha AI",exp:"Hitamo aho gukorera. Buri hamwe ni iry’ubwoko bw’umurimo.",op:"Fungura",
+sT:"Igenamiterere",sLg:"Ururimi",sMo:"Gabanya ukugenda inyuma",sCl:"Siba amakuru ari kuri iyi telefone",sClm:"Igenamiterere, ibiganiro, ibyibukwa n’ifoto yawe byasibwe kuri iki gikoresho.",sNote:"Konti, kwibuka, amateka n’ibyabitswe ntibirabaho. Bikenera kwinjira n’ububiko bw’amakuru, ntibirubakwa.",
+aH:"Ibyerekeye IKAZE THEO AI",a1:"IKAZE THEO AI yakozwe kandi ikomeza gutezwa imbere na",a2:"Udushya twa",av:"Icyerekezo: umufasha wa AI ku giti cyawe no mu kazi, ufasha abantu kwiga, guhanga, gukora ubushakashatsi, kwandika porogaramu, gutumanaho no gukemura ibibazo.",af2:"Amakuru yemejwe ku wayishinze",ar:"Izina: Niyibigira Theoneste. Inshingano: washinze akaba n’uwakoze IKAZE THEO AI. Ikigo: Ikaze Digital.",an:"Nta yindi nkuru y’ubuzima dutangaza kugeza uwayishinze ayitanze. Nusaba icyo tutarabasha kwemeza, AI igomba kubivuga.",as:"Aho bigeze",ass:"Hari ishusho yonyine. Kwinjira, isano na AI, abatanga amashusho n’umuziki, kwibuka, amateka, ubuyobozi no kwishyura ntibirubakwa.",
+rc:"Ibiganiro biheruka",pin:"Omeka ikiganiro",unp:"Kuraho ukwomeka",del:"Siba ikiganiro",cf:"Kanda nanone wemeze",noc:"Nta kiganiro kiraba. Tangira hasi.",si:"Injira",so:"Sohoka",gu:"Umushyitsi",acc:"Konti",mem:"Kwibuka",ce:"Tangira ikiganiro hasi. Ibiganiro byawe bibikwa kuri iki gikoresho.",
+aT:"Konti",aP:"Ifoto y’umwirondoro",aU:"Shyiramo ifoto",aR:"Kuraho ifoto",aN:"Izina ryerekanwa",aS:"Bika",aOk:"Byabitswe kuri iki gikoresho.",aSt:"Winjiye nka ",aGu:"Urimo gukoresha IKAZE THEO AI nk’umushyitsi. Ibiganiro, ibyo kwibuka n’ifoto yawe bibikwa kuri iki gikoresho gusa.",aFb:"Kwinjira byateguwe guhuzwa na Firebase. Kugeza nyiri urubuga yongeyeho iboneza rya Firebase, konti ntizishobora gufungurwa.",aBg:"Hitamo dosiye y’ishusho.",
+mT:"Kwibuka",mP:"Ibintu ushaka ko IKAZE THEO AI yibuka. Bibikwa kuri iki gikoresho kandi ni wowe ubigenzura.",mOn:"Kwibuka hagati y’ibiganiro",mAd:"Ongeraho icyo kwibuka",mPh:"Urugero: Nkunda ibisubizo bigufi",mAb:"Ongeraho",mDel:"Siba iki cyibukwa",mAll:"Siba ibyibukwa byose",mNo:"Nta kintu cyabitswe.",mSec:"Ku mutekano wawe, ntubike amagambo y’ibanga, imfunguzo cyangwa nimero z’ikarita. Ibyo wanditse ntibyabitswe.",mNt:"AI ntiraba ihuzwa, bityo ibyibukwa birabikwa ariko ntibirakoreshwa. Nihuzwa, ibyibukwa bikora bizahabwa AI nk’ibisobanuro.",
+gB:"Komeza na Google",pW:"Ijambobanga",sI:"Injira ukoresheje ijambobanga",cA:"Fungura konti",fp:"Wibagiwe ijambobanga?",dv3:"cyangwa",nco:"Kwinjira ntibirahuzwa. Nyiri urubuga agomba kongeramo iboneza rya Firebase mbere y’uko kwinjira na Google cyangwa ijambobanga bikora. Nta kintu cyoherejwe.",pE:"Andika ijambobanga rigizwe nibura n’inyuguti 6.",ok2:"Winjiye nka ",er2:"Kwinjira byanze: ",rs:"Niba konti ihari kuri iyi imeri, ubutumwa bwo guhindura ijambobanga bwoherejwe.",jE:"Imeri",eE:"Andika imeri nyayo.",sH:"Injira",sP2:"Injira ukoresheje konti yawe ya Google cyangwa imeri n’ijambobanga.",
+f1:"IKAZE THEO AI — Yakozwe na",f2:"Ikoresha udushya. Itezwa imbere na"},
+fr:{ti:"IKAZE THEO AI — Une intelligence. Des possibilités illimitées.",de:"IKAZE THEO AI par Niyibigira Theoneste et Ikaze Digital. Aperçu de l’interface — le serveur d’IA n’est pas encore connecté.",tag:"Une intelligence. Des possibilités illimitées.",
+hi:"Bonjour, je suis IKAZE THEO AI.",hq:"Que créerons-nous, découvrirons-nous ou accomplirons-nous aujourd’hui ?",ph:"Posez-moi une question, décrivez votre idée, téléversez un fichier ou commencez à créer...",st:"Aperçu de l’interface. L’IA n’est pas encore connectée : aucune réponse n’est générée.",
+nv:["Accueil","Nouvelle discussion","Explorer l’IA","Paramètres","À propos d’IKAZE THEO AI"],sh:"Studios",mn:"Menu",lg:"Langue",sk:"Aller au contenu",
+sn:["Studio d’images","Studio de musique","Studio de code","Studio d’écriture","Centre de recherche","Centre d’apprentissage","Studio de documents","Studio de traduction","Analyse de données","Créateur de sites"],
+sd:["Décrivez une image et générez-la, p. ex. un concept de logo pour un café de Kigali.","Paroles, accords et théorie musicale, p. ex. un refrain pour un chant gospel.","Écrire, expliquer et déboguer du code, p. ex. corriger une erreur JavaScript.","E-mails, dissertations, CV et récits, p. ex. une lettre de motivation pour un poste d’enseignant.","Rechercher un sujet avec sources, p. ex. comparer des panneaux solaires.","Plans d’étude et tutorat, p. ex. expliquer les fractions pas à pas.","Résumer des fichiers PDF, Word et tableurs, p. ex. les points clés d’un contrat.","Traduire et corriger un texte, p. ex. de l’anglais au kinyarwanda.","Analyser des données CSV et faire des graphiques, p. ex. les ventes mensuelles.","Planifier un site ou une application, p. ex. les pages d’une petite boutique."],
+ac:["Écrire n’importe quoi","Générer des images","Créer de la musique","Écrire du code","Apprendre quelque chose","Analyser des documents","Traduire des langues","Rechercher un sujet","Créer un site web","Résoudre un problème","Analyser des données","Créer un plan d’affaires"],
+sec:"Essayez l’une de ces idées",sub:"Envoyer",att:"Joindre un fichier ou une image",mic:"Saisie vocale",img:"Génération d’images",nw:"Nouvelle discussion",rm:"Retirer",vns:"La saisie vocale n’est pas prise en charge par ce navigateur.",vls:"J’écoute…",sys:"Système",you:"Vous",
+bk:"Cet espace nécessite la connexion IA côté serveur (la clé OpenAI doit rester sur un serveur). Elle n’est pas encore branchée : votre message n’a été envoyé nulle part et aucune réponse n’a été générée.",bi:"La génération d’images et de musique nécessite aussi des prestataires distincts, non connectés.",af:"Les fichiers sont seulement listés ; ils ne sont pas encore lus ni envoyés.",
+ex:"Explorer l’IA",exp:"Choisissez un espace. Chacun est dédié à un type de tâche.",op:"Ouvrir",
+sT:"Paramètres",sLg:"Langue",sMo:"Réduire les animations de fond",sCl:"Effacer les données locales",sClm:"Réglages, discussions, souvenirs et photo effacés de cet appareil.",sNote:"Les comptes, la mémoire, l’historique et les éléments enregistrés ne sont pas encore disponibles. Ils nécessitent une connexion et une base de données, non construites.",
+aH:"À propos d’IKAZE THEO AI",a1:"IKAZE THEO AI est développée et continuellement améliorée par",a2:"Une innovation de",av:"Vision : un assistant d’IA personnel et professionnel qui aide à apprendre, créer, rechercher, coder, communiquer et résoudre des problèmes.",af2:"Informations vérifiées sur le fondateur",ar:"Nom : Niyibigira Theoneste. Rôle : fondateur et développeur d’IKAZE THEO AI. Organisation : Ikaze Digital.",an:"Nous ne publions aucune autre biographie tant que le fondateur ne l’a pas fournie. Si on demande quelque chose de non vérifié, l’IA doit le dire.",as:"État actuel",ass:"Seule cette interface existe. La connexion, le lien avec l’IA, les prestataires d’images et de musique, la mémoire, l’historique, l’administration et les paiements ne sont pas encore construits.",
+rc:"Discussions récentes",pin:"Épingler la discussion",unp:"Désépingler",del:"Supprimer la discussion",cf:"Touchez encore pour confirmer",noc:"Aucune discussion pour l’instant. Commencez ci-dessous.",si:"Se connecter",so:"Se déconnecter",gu:"Invité",acc:"Compte",mem:"Mémoire",ce:"Commencez une discussion ci-dessous. Vos discussions sont enregistrées sur cet appareil.",
+aT:"Compte",aP:"Photo de profil",aU:"Téléverser une photo",aR:"Retirer la photo",aN:"Nom affiché",aS:"Enregistrer",aOk:"Enregistré sur cet appareil.",aSt:"Connecté en tant que ",aGu:"Vous utilisez IKAZE THEO AI en tant qu’invité. Discussions, mémoire et photo sont enregistrées uniquement sur cet appareil.",aFb:"La connexion est prête à être reliée à Firebase. Tant que le propriétaire du site n’a pas ajouté la configuration Firebase, aucun compte ne peut être créé.",aBg:"Choisissez un fichier image.",
+mT:"Mémoire",mP:"Ce que vous voulez qu’IKAZE THEO AI retienne. Cela reste sur cet appareil et vous le contrôlez.",mOn:"Retenir des choses entre les discussions",mAd:"Ajouter un souvenir",mPh:"Par exemple : je préfère des réponses courtes",mAb:"Ajouter",mDel:"Supprimer ce souvenir",mAll:"Supprimer tous les souvenirs",mNo:"Aucun souvenir enregistré.",mSec:"Pour votre sécurité, n’enregistrez pas de mots de passe, de clés ou de numéros de carte. Ce texte n’a pas été enregistré.",mNt:"L’IA n’est pas encore connectée : les souvenirs sont enregistrés mais pas utilisés. Une fois connectée, les souvenirs actifs lui seront fournis comme contexte.",
+gB:"Continuer avec Google",pW:"Mot de passe",sI:"Se connecter avec le mot de passe",cA:"Créer un compte",fp:"Mot de passe oublié ?",dv3:"ou",nco:"La connexion n’est pas encore branchée. Le propriétaire du site doit ajouter la configuration Firebase pour que Google ou le mot de passe fonctionnent. Rien n’a été envoyé.",pE:"Veuillez saisir un mot de passe d’au moins 6 caractères.",ok2:"Connecté en tant que ",er2:"Échec de la connexion : ",rs:"Si un compte existe pour cet e-mail, un message de réinitialisation a été envoyé.",jE:"Adresse e-mail",eE:"Veuillez saisir une adresse e-mail valide.",sH:"Connexion",sP2:"Connectez-vous avec votre compte Google ou avec votre e-mail et mot de passe.",
+f1:"IKAZE THEO AI — Développée par",f2:"Propulsée par l’innovation. Améliorée par"}
+};
+var IK="https://ikaze-digital.vercel.app/",NT="https://theonesteniyibigira6-hue.github.io/NIYIBIGIRA-/";
+var FB=null; /* Site owner: paste your Firebase web config here, e.g. {apiKey:"...",authDomain:"...",projectId:"...",appId:"..."} */
+var ST=["image","music","code","write","research","learn","doc","trans","data","web"],AT=["write","image","music","code","learn","doc","trans","research","web","chat","data","chat"],SI=["image","music","code","pen","search","grad","file","languages","chart","layout"];
+var L="en",R="home",PRE={},calm=false,U=null,cur=null,cf=null,FL="",OLD="",S0=function(){return{chats:[],mem:[],memOn:true,name:"",avatar:""}},S=S0(),$=function(i){return document.getElementById(i)};
+try{var s=localStorage.getItem("ikaze-theo-lang");if(D[s])L=s;else{var b=(navigator.language||"en").slice(0,2);if(D[b])L=b}calm=localStorage.getItem("ikaze-theo-calm")=="1"}catch(e){}
+function sk(){return"ikaze-theo-s-"+(U?U.uid:"guest")}
+function load(){try{var j=JSON.parse(localStorage.getItem(sk())||"null");S=j?{chats:j.chats||[],mem:j.mem||[],memOn:j.memOn!==false,name:j.name||"",avatar:j.avatar||""}:S0()}catch(e){S=S0()}cur=null}
+function save(){try{localStorage.setItem(sk(),JSON.stringify(S))}catch(e){}}
+var IC={paperclip:"M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48",mic:"M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z M19 10v2a7 7 0 0 1-14 0v-2 M12 19v3 M8 22h8",image:"M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z M21 15l-5-5L5 21",plus:"M12 5v14 M5 12h14",send:"M22 2L11 13 M22 2l-7 20-4-9-9-4 20-7z",menu:"M3 6h18 M3 12h18 M3 18h18",home:"M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z",compass:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M16.2 7.8l-2.1 6.3-6.3 2.1 2.1-6.3z",settings:"M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z",sparkles:"M12 3l1.9 5.8L20 10.7l-6.1 1.9L12 18.5l-1.9-5.9L4 10.7l6.1-1.9z M19 3v4 M17 5h4",pin:"M12 17v5 M9 3h6l-1 7 4 3v2H6v-2l4-3z",trash:"M3 6h18 M8 6V4h8v2 M19 6l-1 14H6L5 6 M10 11v6 M14 11v6",user:"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",login:"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4 M10 17l5-5-5-5 M15 12H3",logout:"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9",camera:"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",brain:"M9 3a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 1 5 3 3 0 0 0 4 3V3z M15 3a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-1 5 3 3 0 0 1-4 3V3z",music:"M9 18V5l12-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z",code:"M16 18l6-6-6-6 M8 6l-6 6 6 6",pen:"M12 20h9 M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z",search:"M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z M21 21l-4.3-4.3",grad:"M22 10L12 5 2 10l10 5z M6 12v5c3 2 9 2 12 0v-5",file:"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M8 13h8 M8 17h8",languages:"M5 8l6 6 M4 14l6-6 2-3 M2 5h12 M7 2h1 M22 22l-5-10-5 10 M14 18h6",chart:"M18 20V10 M12 20V4 M6 20v-6",layout:"M3 3h18v18H3z M3 9h18 M9 21V9"};
+function ic(n,z){var N="http://www.w3.org/2000/svg",v=document.createElementNS(N,"svg"),p=document.createElementNS(N,"path");v.setAttribute("viewBox","0 0 24 24");v.setAttribute("width",z||20);v.setAttribute("height",z||20);v.setAttribute("fill","none");v.setAttribute("stroke","currentColor");v.setAttribute("stroke-width","2");v.setAttribute("stroke-linecap","round");v.setAttribute("stroke-linejoin","round");v.setAttribute("aria-hidden","true");p.setAttribute("d",IC[n]);v.appendChild(p);return v}
+function logo(z){var w=document.createElement("span");w.className="lgo";w.setAttribute("aria-hidden","true");w.innerHTML='<svg viewBox="0 0 40 40" width="'+z+'" height="'+z+'"><circle cx="20" cy="20" r="15" fill="none" stroke="url(#g1)" stroke-width="3"/><ellipse cx="20" cy="20" rx="19" ry="7" fill="none" stroke="#3b82f6" stroke-opacity=".8" transform="rotate(-25 20 20)"/><path d="M13 14h14M20 14v13" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>';return w}
+function E(t,c,x,a){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;if(a)for(var k in a)e.setAttribute(k,a[k]);return e}
+function A(h,x,ext,c){var a=E("a",c,x,{href:h});if(ext){a.target="_blank";a.rel="noopener"}return a}
+function add(p){for(var i=1;i<arguments.length;i++)if(arguments[i])p.appendChild(arguments[i]);return p}
+function ib(n,lbl,cls,fn){var b=E("button","ib"+(cls?" "+cls:""),null,{type:"button","aria-label":lbl,title:lbl});b.appendChild(ic(n,20));if(fn)b.onclick=fn;return b}
+function tb(n,txt,cls,fn){var b=E("button",cls,null,{type:"button"});b.appendChild(ic(n,18));b.appendChild(document.createTextNode(txt));if(fn)b.onclick=fn;return b}
+function avatar(z){var w=E("span","avt"),a=S.avatar||(U&&U.photo);w.style.width=w.style.height=z+"px";if(a){var i=E("img",0,null,{src:a,alt:""});i.onerror=function(){w.textContent="";w.appendChild(ic("user",z*.55))};w.appendChild(i)}else w.appendChild(ic("user",z*.55));return w}
+/* Firebase auth (activates when FB is set) */
+function fbLoad(cb){if(!FB)return cb(false);if(window.firebase&&firebase.apps&&firebase.apps.length)return cb(true);var u=["app","auth"],i=0;(function n(){if(i==u.length){try{firebase.initializeApp(FB)}catch(e){return cb(false)}return cb(true)}var c=document.createElement("script");c.src="https://www.gstatic.com/firebasejs/10.12.2/firebase-"+u[i++]+"-compat.js";c.onload=n;c.onerror=function(){cb(false)};document.head.appendChild(c)})()}
+function authInit(){fbLoad(function(ok){if(!ok)return;firebase.auth().onAuthStateChanged(function(u){U=u?{uid:u.uid,email:u.email,name:u.displayName,photo:u.photoURL}:null;load();render()})})}
+/* Chats */
+function byRecent(){return S.chats.slice().sort(function(a,b){return(b.pinned?1:0)-(a.pinned?1:0)||b.t-a.t})}
+function getC(id){for(var i=0;i<S.chats.length;i++)if(S.chats[i].id==id)return S.chats[i]}
+function openC(id){cur=id;if(R=="chat")render();else location.hash="chat"}
+function newC(){cur=null;if(R=="chat")render();else location.hash="chat"}
+function pinC(id){var c=getC(id);if(c){c.pinned=!c.pinned;save();render()}}
+function delC(id){S.chats=S.chats.filter(function(c){return c.id!=id});if(cur==id)cur=null;cf=null;save();render()}
+function askDel(id){if(cf==id){delC(id);return}cf=id;render();setTimeout(function(){if(cf==id){cf=null;render()}},4000)}
+function post(t,ws){var d=D[L],c=cur&&getC(cur);if(!c){c={id:"c"+Date.now(),title:(ws?d.sn[ST.indexOf(ws)]+": ":"")+t.slice(0,40),pinned:false,t:0,m:[]};S.chats.push(c);cur=c.id}
+c.m.push(["u",t]);c.m.push(["s",(ws=="image"||ws=="music")?"bki":"bk"]);c.t=Date.now();save();if(R=="chat")render();else location.hash="chat"}
+function bubble(w,t,sy){var b=E("div","bb"+(sy?" sy":""));add(b,add(E("strong"),sy?logo(16):null,document.createTextNode(w)),E("p",0,t));return b}
+function comp(d,ws){var key=ws||"chat",ta=E("textarea",0,null,{placeholder:d.ph,"aria-label":d.ph}),fl=E("div"),fi=E("input",0,null,{type:"file",multiple:""}),stx=E("span","mu",null,{role:"status"}),F=[],rc=null;
+fi.hidden=true;ta.value=PRE[key]||OLD||"";delete PRE[key];
+function chips(){fl.textContent="";F.forEach(function(f,i){var c=E("button","chip",f.name+" ✕",{type:"button","aria-label":d.rm+": "+f.name});c.onclick=function(){F.splice(i,1);chips()};fl.appendChild(c)});if(F.length)fl.appendChild(E("span","mu",d.af))}
+fi.onchange=function(){for(var i=0;i<fi.files.length;i++)F.push(fi.files[i]);fi.value="";chips()};
+function send(){var v=ta.value.trim();if(!v&&!F.length)return;if(rc){try{rc.stop()}catch(e){}}post(v||F.map(function(f){return f.name}).join(", "),ws)}
+ta.onkeydown=function(e){if(e.key=="Enter"&&!e.shiftKey){e.preventDefault();send()}};
+var at=ib("paperclip",d.att,0,function(){fi.click()}),mc=ib("mic",d.mic,0),nw=ib("plus",d.nw,0,newC),sd=ib("send",d.sub,"go",send);mc.setAttribute("aria-pressed","false");
+mc.onclick=function(){if(rc){try{rc.stop()}catch(e){}return}var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){stx.textContent=d.vns;return}rc=new SR();rc.lang={en:"en-US",rw:"rw-RW",fr:"fr-FR"}[L];rc.onresult=function(e){ta.value+=(ta.value?" ":"")+e.results[0][0].transcript};rc.onend=function(){rc=null;mc.classList.remove("rec");mc.setAttribute("aria-pressed","false");stx.textContent=""};rc.onerror=function(){stx.textContent=d.vns};mc.classList.add("rec");mc.setAttribute("aria-pressed","true");stx.textContent=d.vls;try{rc.start()}catch(x){stx.textContent=d.vns}};
+var row=E("div","rw");add(row,at,mc);if(ws!="image")row.appendChild(add(E("a","ib",null,{href:"#image","aria-label":d.img,title:d.img}),ic("image",20)));add(row,nw,E("span","sp"),sd);
+return add(E("div","cp"),add(E("div","bx"),ta,fl,fi,row,stx))}
+function chatBar(c,d){var r=E("div","rw");add(r,tb("pin",c.pinned?d.unp:d.pin,"chip",function(){pinC(c.id)}),tb("trash",cf==c.id?d.cf:d.del,"chip"+(cf==c.id?" rec":""),function(){askDel(c.id)}));return r}
+var V={
+home:function(m,d){var h=E("section","hero");add(h,logo(56),E("h1",0,d.hi),E("p","mu",d.hq),E("span","pill",d.st));m.appendChild(h);m.appendChild(comp(d));m.appendChild(E("h2",0,d.sec));
+var g=E("div","grid");d.ac.forEach(function(x,i){var b=E("button","cd",x,{type:"button"});b.onclick=function(){PRE[AT[i]]=x;location.hash=AT[i]};g.appendChild(b)});m.appendChild(g);
+var rs=byRecent().slice(0,4);if(rs.length){m.appendChild(E("h2",0,d.rc));var g2=E("div","grid");rs.forEach(function(c){var b=E("button","cd",c.title,{type:"button"});b.onclick=function(){openC(c.id)};g2.appendChild(b)});m.appendChild(g2)}},
+chat:function(m,d){var c=cur&&getC(cur);add(m,E("h1",0,c?c.title:d.nv[1]));if(c){m.appendChild(chatBar(c,d));var th=E("div","th",null,{"aria-live":"polite"});c.m.forEach(function(x){var u=x[0]=="u";th.appendChild(bubble(u?d.you:d.sys,u?x[1]:(x[1]=="bki"?d.bk+" "+d.bi:d.bk),!u))});m.appendChild(th)}else m.appendChild(E("p","mu",d.ce));m.appendChild(comp(d))},
+explore:function(m,d){var g=E("div","grid");ST.forEach(function(id,i){var c=E("a","cd",null,{href:"#"+id});add(c,add(E("h3"),ic(SI[i],20),document.createTextNode(" "+d.sn[i])),E("p","mu",d.sd[i]),E("strong",0,d.op+" →"));g.appendChild(c)});add(m,E("h1",0,d.ex),E("p","mu",d.exp),g)},
+settings:function(m,d){var l=E("label",0,d.sLg,{"for":"ls2"}),s2=E("select",0,null,{id:"ls2"});[["en","EN – English"],["rw","RW – Kinyarwanda"],["fr","FR – Français"]].forEach(function(x){s2.appendChild(E("option",0,x[1],{value:x[0]}))});s2.value=L;s2.onchange=function(){setL(this.value)};
+var ck=E("label","ck"),ci=E("input",0,null,{type:"checkbox"});ci.checked=calm;ci.onchange=function(){calm=ci.checked;try{localStorage.setItem("ikaze-theo-calm",calm?"1":"0")}catch(e){}bgReset()};add(ck,ci,E("span",0,d.sMo));
+var cl=E("button","btn",d.sCl,{type:"button"}),ms=E("p","mu",FL,{role:"status"}),armed=false;
+cl.onclick=function(){if(!armed){armed=true;cl.textContent=d.cf;setTimeout(function(){armed=false;cl.textContent=d.sCl},4000);return}
+try{localStorage.removeItem("ikaze-theo-lang");localStorage.removeItem("ikaze-theo-calm");localStorage.removeItem(sk())}catch(e){}S=S0();cur=null;calm=false;bgReset();FL=d.sClm;render()};
+add(m,E("h1",0,d.sT),l,s2,ck,add(E("div"),cl),ms,add(E("div","st"),d.sNote))},
+account:function(m,d){var ms=E("p","ok",FL,{role:"status"});ms.hidden=!FL;var fi=E("input",0,null,{type:"file",accept:"image/*"}),nm=E("input",0,null,{id:"dn",type:"text",maxlength:"40"}),ln=E("label",0,d.aN,{"for":"dn"});fi.hidden=true;nm.value=S.name;
+fi.onchange=function(){var f=fi.files[0];if(!f)return;if(!/^image\//.test(f.type)){FL=d.aBg;render();return}var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement("canvas");c.width=c.height=160;var g=c.getContext("2d"),q=Math.min(im.width,im.height);g.drawImage(im,(im.width-q)/2,(im.height-q)/2,q,q,0,0,160,160);S.avatar=c.toDataURL("image/jpeg",.85);save();FL=d.aOk;render()};im.onerror=function(){FL=d.aBg;render()};im.src=r.result};r.readAsDataURL(f)};
+var row=E("div","rw");add(row,avatar(88),tb("camera",d.aU,"btn",function(){fi.click()}));if(S.avatar)row.appendChild(tb("trash",d.aR,"chip",function(){S.avatar="";save();FL=d.aOk;render()}));
+var f=E("form","fm",null,{novalidate:""});add(f,add(ln,nm),tb("user",d.aS,"btn"));f.querySelector("button").type="submit";f.onsubmit=function(e){e.preventDefault();S.name=nm.value.trim();save();FL=d.aOk;render()};
+add(m,E("h1",0,d.aT),ms,E("h2",0,d.aP),row,fi,E("h2",0,d.aN),f);
+if(U){m.appendChild(E("p",0,d.aSt+(U.email||"")));m.appendChild(tb("logout",d.so,"btn",function(){fbLoad(function(ok){if(ok)firebase.auth().signOut()})}))}
+else{m.appendChild(add(E("div","st"),d.aGu));if(!FB)m.appendChild(add(E("div","st"),d.aFb));m.appendChild(add(E("div","row"),add(A("#signin",null,0,"btn"),ic("login",18),document.createTextNode(" "+d.si))))}
+m.appendChild(add(E("p"),A("#memory",d.mem)))},
+signin:function(m,d){var gb=E("button","btn",d.gB,{type:"button"}),f=E("form","fm",null,{novalidate:""}),i1=E("input",0,null,{id:"se",type:"email",autocomplete:"email"}),i2=E("input",0,null,{id:"sp",type:"password",autocomplete:"current-password"}),l1=E("label",0,null,{"for":"se"}),l2=E("label",0,null,{"for":"sp"}),er=E("div","er",null,{role:"alert"}),ms=E("div","ok",null,{role:"status"});ms.hidden=true;
+add(l1,E("span",0,d.jE),i1);add(l2,E("span",0,d.pW),i2);
+function go(fn,okm){er.textContent="";ms.hidden=true;fbLoad(function(ok){if(!ok){er.textContent=d.nco;return}fn(firebase.auth()).then(function(r){ms.textContent=okm||(d.ok2+((r&&r.user&&r.user.email)||""));ms.hidden=false}).catch(function(e){er.textContent=d.er2+(e.message||"")})})}
+function chk(pw){var e=i1.value.trim(),p=i2.value;if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)){er.textContent=d.eE;i1.focus();return null}if(pw&&p.length<6){er.textContent=d.pE;i2.focus();return null}return[e,p]}
+gb.onclick=function(){go(function(a){return a.signInWithPopup(new firebase.auth.GoogleAuthProvider())})};
+f.onsubmit=function(ev){ev.preventDefault();er.textContent="";var c=chk(1);if(c)go(function(a){return a.signInWithEmailAndPassword(c[0],c[1])})};
+var b1=E("button","btn",d.sI,{type:"submit"}),b2=E("button","chip",d.cA,{type:"button"}),b3=E("button","chip",d.fp,{type:"button"});
+b2.onclick=function(){er.textContent="";var c=chk(1);if(c)go(function(a){return a.createUserWithEmailAndPassword(c[0],c[1])})};
+b3.onclick=function(){er.textContent="";var c=chk(0);if(c)go(function(a){return a.sendPasswordResetEmail(c[0])},d.rs)};
+add(f,l1,l2,er,b1,add(E("div","rw"),b2,b3),ms);var w=E("div","cd");w.style.maxWidth="460px";add(w,add(E("div"),logo(40)),E("p","mu",d.sP2),gb,E("p","mu",d.dv3),f);
+add(m,E("h1",0,d.sH),w,add(E("div","st"),d.nco))},
+memory:function(m,d){var ms=E("p","ok",FL,{role:"status"});ms.hidden=!FL;var ck=E("label","ck"),ci=E("input",0,null,{type:"checkbox"});ci.checked=S.memOn;ci.onchange=function(){S.memOn=ci.checked;save()};add(ck,ci,E("span",0,d.mOn));
+var SEC=/pass(word|code)|api[\s_-]?key|secret|token|\bsk-[A-Za-z0-9]{8,}|\b\d{13,19}\b/i;
+var f=E("form","mi",null,{novalidate:""}),inp=E("input",0,null,{type:"text",placeholder:d.mPh,"aria-label":d.mAd,maxlength:"200"}),ad=tb("plus",d.mAb,"btn");ad.type="submit";add(f,inp,ad);
+f.onsubmit=function(e){e.preventDefault();var v=inp.value.trim();if(!v)return;if(SEC.test(v)){FL=d.mSec;render();return}S.mem.push({id:"m"+Date.now(),text:v});save();FL="";render()};
+add(m,E("h1",0,d.mT),E("p","mu",d.mP),ms,ck,E("h2",0,d.mAd),f);
+if(!S.mem.length)m.appendChild(E("p","mu",d.mNo));
+S.mem.forEach(function(x,i){var r=E("div","mi"),t=E("input",0,null,{type:"text","aria-label":d.mT,maxlength:"200"});t.value=x.text;t.onchange=function(){var v=t.value.trim();if(!v||SEC.test(v)){FL=SEC.test(v)?d.mSec:"";render();return}x.text=v;save()};add(r,t,ib("trash",d.mDel,0,function(){S.mem.splice(i,1);save();render()}));m.appendChild(r)});
+if(S.mem.length){var armed=false,b=tb("trash",d.mAll,"chip");b.onclick=function(){if(!armed){armed=true;b.textContent=d.cf;setTimeout(function(){armed=false;b.textContent=d.mAll},4000);return}S.mem=[];save();render()};m.appendChild(b)}
+m.appendChild(add(E("div","st"),d.mNt))},
+about:function(m,d){var p1=E("p"),p2=E("p"),q=E("p","wr");add(p1,E("span",0,d.a1+" "),A(NT,"NIYIBIGIRA THEONESTE",1),E("span",0,"."));add(p2,E("span",0,d.a2+" "),A(IK,"IKAZE DIGITAL",1),E("span",0,"."));add(q,A(NT,NT,1),E("br"),A(IK,IK,1));
+add(m,add(E("div"),logo(48)),E("h1",0,d.aH),p1,p2,E("p","mu",d.av),E("h2",0,d.af2),E("p",0,d.ar),q,E("p","mu",d.an),E("h2",0,d.as),add(E("div","st"),d.ass))}
+};
+ST.forEach(function(id,i){V[id]=function(m,d){add(m,add(E("h1"),ic(SI[i],30),document.createTextNode(" "+d.sn[i])),E("p","mu",d.sd[i]),add(E("div","st"),d.st),comp(d,id))}});
+function nav(d){var n=$("nv");n.textContent="";function l(h,x,i){var a=A("#"+h,null);add(a,ic(i,20),E("span",0,x));if(h==R)a.setAttribute("aria-current","page");n.appendChild(a)}
+var nb=E("button","nb",null,{type:"button"});add(nb,ic("plus",20),E("span",0,d.nv[1]));nb.onclick=newC;n.appendChild(nb);l("home",d.nv[0],"home");l("explore",d.nv[2],"compass");
+n.appendChild(E("div","gh",d.rc));var rs=byRecent().slice(0,12);if(!rs.length)n.appendChild(E("p","mu sm",d.noc));
+rs.forEach(function(c){var row=E("div","ci"+(c.id==cur&&R=="chat"?" on":"")),a=E("button","ct",null,{type:"button"});if(c.pinned)a.appendChild(ic("pin",14));a.appendChild(E("span",0,c.title));a.onclick=function(){openC(c.id)};
+var pb=ib("pin",(c.pinned?d.unp:d.pin)+": "+c.title,"ia"+(c.pinned?" act":""),function(){pinC(c.id)}),db=ib("trash",(cf==c.id?d.cf:d.del)+": "+c.title,"ia"+(cf==c.id?" danger":""),function(){askDel(c.id)});pb.className=pb.className.replace("ib ","");db.className=db.className.replace("ib ","");
+add(row,a,pb,db);n.appendChild(row);if(cf==c.id)n.appendChild(E("p","sm",d.cf))});
+n.appendChild(E("div","gh",d.sh));ST.forEach(function(id,i){l(id,d.sn[i],SI[i])});n.appendChild(E("div","gh","·"));l("memory",d.mem,"brain");l("settings",d.nv[3],"settings");l("about",d.nv[4],"sparkles")}
+function acct(d){var a=$("acct");a.textContent="";var nm=S.name||(U&&(U.name||U.email))||d.gu,l=E("a","ac",null,{href:"#account"});add(l,avatar(40),E("span","nm",nm));var b;
+if(U){b=E("button","nb",null,{type:"button"});add(b,ic("logout",20),E("span",0,d.so));b.onclick=function(){fbLoad(function(ok){if(ok)firebase.auth().signOut()})}}
+else{b=A("#signin",null,0,"nb");add(b,ic("login",20),E("span",0,d.si))}add(a,l,b)}
+function foot(d){var f=$("ft");f.textContent="";var a=E("p"),b=E("p");add(a,E("span",0,d.f1+" "),A(NT,"NIYIBIGIRA THEONESTE",1),E("span",0,"."));add(b,E("span",0,d.f2+" "),A(IK,"IKAZE DIGITAL",1),E("span",0,"."));add(f,a,b)}
+function route(){var h=location.hash.slice(1);R=V[h]?h:"home"}
+function title(d){var i=ST.indexOf(R),n={home:d.ti,chat:d.nv[1],explore:d.ex,settings:d.sT,about:d.aH,account:d.aT,signin:d.sH,memory:d.mT}[R]||d.sn[i];return R=="home"?n:n+" — IKAZE THEO AI"}
+function render(){var d=D[L];route();var old=$("main").querySelector("textarea");OLD=old?old.value:"";document.documentElement.lang=L;var m=$("main");m.textContent="";V[R](m,d);OLD="";FL="";nav(d);acct(d);foot(d);
+document.title=title(d);document.querySelector('meta[name=description]').setAttribute("content",d.de);
+$("sk").textContent=d.sk;$("tg").textContent=d.tag;var mb=$("mb");mb.textContent="";mb.appendChild(ic("menu",22));mb.setAttribute("aria-label",d.mn);$("ls").setAttribute("aria-label",d.lg);$("ls").value=L;var tv=$("tav");tv.textContent="";tv.appendChild(avatar(36));tv.setAttribute("aria-label",d.acc);closeD()}
+function setL(v){L=v;try{localStorage.setItem("ikaze-theo-lang",L)}catch(e){}render()}
+function openD(){$("sb").classList.add("o");$("ov").hidden=false;$("mb").setAttribute("aria-expanded","true")}
+function closeD(){$("sb").classList.remove("o");$("ov").hidden=true;$("mb").setAttribute("aria-expanded","false")}
+$("mb").onclick=function(){$("sb").classList.contains("o")?closeD():openD()};$("ov").onclick=closeD;
+document.addEventListener("keydown",function(e){if(e.key=="Escape")closeD()});
+$("ls").onchange=function(){setL(this.value)};
+window.addEventListener("hashchange",function(){render();window.scrollTo(0,0)});
+/* Cosmic background (lightweight 2D canvas) */
+var bgReset=function(){};
+(function(){var c=$("cv"),g=c.getContext("2d"),S=[],W=0,H=0,mx=0,my=0,t=0,run=false,rmq=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)");
+function init(){var dp=Math.min(devicePixelRatio||1,1.5);W=innerWidth;H=innerHeight;c.width=W*dp;c.height=H*dp;g.setTransform(dp,0,0,dp,0,0);S=[];for(var i=0;i<(W<700?70:150);i++)S.push({x:Math.random()*W,y:Math.random()*H,z:.2+Math.random()*.8,r:.4+Math.random()*1.3,p:Math.random()*6})}
+function blob(x,y,r,col){var q=g.createRadialGradient(x,y,0,x,y,r);q.addColorStop(0,col);q.addColorStop(1,"rgba(0,0,0,0)");g.fillStyle=q;g.fillRect(x-r,y-r,r*2,r*2)}
+function draw(){g.clearRect(0,0,W,H);var sy=scrollY*.05,R0=Math.max(W,H);
+blob(W*.72+Math.cos(t*.2)*30+mx*20,H*.22+Math.sin(t*.15)*20,R0*.55,"rgba(70,90,255,.28)");blob(W*.15-mx*15,H*.8,R0*.5,"rgba(139,92,246,.22)");blob(W*.5,H*.5+Math.sin(t*.1)*30,R0*.35,"rgba(34,211,238,.1)");
+S.forEach(function(s){var x=(s.x+mx*30*s.z+W)%W,y=((s.y-sy*s.z+t*2*s.z)%H+H)%H;g.globalAlpha=.4+.6*Math.abs(Math.sin(t*.6+s.p));g.fillStyle="#fff";g.beginPath();g.arc(x,y,s.r*s.z+.3,0,6.3);g.fill()});g.globalAlpha=1;
+[[.82,.68,34,"#3b82f6"],[.2,.3,18,"#22d3ee"]].forEach(function(p,i){var x=W*p[0]+Math.cos(t*.1+i)*18-mx*25*(i+1),y=H*p[1]+Math.sin(t*.1+i)*10,q=g.createRadialGradient(x-p[2]*.3,y-p[2]*.3,2,x,y,p[2]);q.addColorStop(0,"#fff");q.addColorStop(.3,p[3]);q.addColorStop(1,"#04061a");g.fillStyle=q;g.beginPath();g.arc(x,y,p[2],0,6.3);g.fill()});
+for(var i=0;i<3;i++){var u=((t*40+i*300)%(W+400))-200,y2=H*(.2+i*.3);var q=g.createLinearGradient(u,y2,u+160,y2-60);q.addColorStop(0,"rgba(34,211,238,0)");q.addColorStop(1,"rgba(34,211,238,.45)");g.strokeStyle=q;g.lineWidth=1.5;g.beginPath();g.moveTo(u,y2);g.lineTo(u+160,y2-60);g.stroke()}}
+function still(){return calm||(rmq&&rmq.matches)}
+function loop(){if(!run)return;t+=.016;draw();requestAnimationFrame(loop)}
+function start(){if(still()){run=false;draw()}else if(!run&&!document.hidden){run=true;loop()}}
+bgReset=function(){run=false;start()};
+addEventListener("resize",function(){init();draw()});addEventListener("scroll",function(){if(!run)requestAnimationFrame(draw)},{passive:true});
+addEventListener("pointermove",function(e){mx=e.clientX/W-.5;my=e.clientY/H-.5;if(!run&&!still())requestAnimationFrame(draw)});
+document.addEventListener("visibilitychange",function(){run=false;start()});
+init();draw();start()})();
+load();authInit();render();
+</script>
+</body>
+</html>

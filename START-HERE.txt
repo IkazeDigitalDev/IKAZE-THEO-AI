@@ -1,0 +1,10 @@
+IKAZE THEO AI — START HERE
+
+1. Read README.md.
+2. Enable Google and Email/Password in Firebase Authentication.
+3. Create backend/.env from backend/.env.example and add your OpenAI API key and Firebase Admin service account JSON.
+4. In backend/, run: npm install && npm run dev
+5. Serve index.html with VS Code Live Server (not file://).
+6. Sign in, then send a test question to ChatGPT / OpenAI.
+
+Never put your OpenAI key or Firebase Admin service-account private key in index.html or GitHub.
